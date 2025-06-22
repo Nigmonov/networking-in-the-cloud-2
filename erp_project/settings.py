@@ -154,7 +154,7 @@ JAZZMIN_SETTINGS = {
         "sales.sale": "fas fa-receipt",
         "sales.saleitem": "fas fa-list",
     },
-    "language_chooser": True,
+    "language_chooser": False,
 }
 JAZZMIN_UI_TWEAKS = {
     "brand_colour": "primary",

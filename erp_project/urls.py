@@ -4,12 +4,11 @@ from django.conf.urls.i18n import i18n_patterns
 from erp_project import settings
 
 urlpatterns = [
-    path("i18n/", include("django.conf.urls.i18n")),  # ← KIRITING
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls")),
     path("inventory/", include("inventory.urls")),
     path("sales/", include("sales.urls")),
-    path("", include("dashboard.urls")),  # bosh sahifa
+    path("", include("dashboard.urls")),
 ]
 
 urlpatterns += i18n_patterns(
