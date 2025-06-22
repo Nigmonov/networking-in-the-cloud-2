@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-between mb-6">
+  <h2 class="text-2xl font-semibold text-gray-800">Products</h2>
+  <a href="{% url 'product_create' %}"
+     class="inline-block px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-medium rounded-md transition">
+    + New Product
+  </a>
+</div>
+
+<div class="overflow-x-auto bg-white shadow-md rounded-lg border border-gray-200">
+  <table class="min-w-full text-sm divide-y divide-gray-200">
+    <thead class="bg-blue-50 text-gray-700 uppercase tracking-wider text-xs">
+      <tr>
+        <th class="px-4 py-3 text-left">#</th>
+        <th class="px-4 py-3 text-left">Name</th>
+        <th class="px-4 py-3 text-left">Category</th>
+        <th class="px-4 py-3 text-center">Qty</th>
+        <th class="px-4 py-3 text-right">Sell Price</th>
+        <th class="px-4 py-3 text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-100">
+      {% for p in object_list %}
+      <tr class="hover:bg-gray-50 {% if p.is_low %}bg-red-50{% endif %}">
+        <td class="px-4 py-2">{{ forloop.counter0|add:page_obj.start_index }}</td>
+        <td class="px-4 py-2">{{ p.name }}</td>
+        <td class="px-4 py-2">{{ p.category }}</td>
+        <td class="px-4 py-2 text-center">{{ p.quantity }}</td>
+        <td class="px-4 py-2 text-right">{{ p.sell_price|floatformat:2 }}</td>
+        <td class="px-4 py-2 text-center space-x-2">
+          <a href="{% url 'product_update' p.id %}"
+             class="inline-block px-3 py-1 text-xs font-medium text-blue-600 border border-blue-300 rounded hover:bg-blue-50 transition">
+            Edit
+          </a>
+          <a href="{% url 'product_delete' p.id %}"
+             class="inline-block px-3 py-1 text-xs font-medium text-red-600 border border-red-300 rounded hover:bg-red-50 transition">
+            Del
+          </a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6" class="px-4 py-4 text-center text-gray-400">No products yet.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="mt-6">
+  {% include "partials/pagination.html" with page_obj=page_obj %}
+</div>
+{% endblock %}

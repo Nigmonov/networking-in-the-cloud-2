@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block title %}New Sale{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-4">
+  <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200 space-y-6 mt-6">
+
+    <h2 class="text-2xl font-semibold text-gray-800">New Sale</h2>
+
+    <form method="post" class="space-y-6">
+      {% csrf_token %}
+
+      <!-- Main Sale Form -->
+      <div class="space-y-4">
+        {{ form|crispy }}
+      </div>
+
+      <hr class="border-t border-gray-300">
+
+      <!-- Items Formset -->
+      <h3 class="text-lg font-medium text-gray-700">Items</h3>
+      {{ items.management_form }}
+
+      <div class="space-y-4">
+        {% for form in items %}
+          <div class="bg-gray-50 border border-gray-200 p-4 rounded-md shadow-sm">
+            {{ form|crispy }}
+          </div>
+        {% endfor %}
+      </div>
+
+      <button type="submit"
+              class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md transition duration-300">
+        Save Sale
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}ERP{% endblock %}</title>
+    <style>
+        body {
+            min-height: 100vh;
+        }
+    </style>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#1A73E8',
+                        dark: '#1F2937',
+                        light: '#F9FAFB',
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-light font-sans text-gray-800 bg-gray-100">
+
+{% include "partials/_navbar.html" %}
+
+<main class="max-w-6xl mx-auto px-4 py-6">
+    {% block content %}{% endblock %}
+</main>
+
+{% include "partials/_footer.html" %}
+
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/alpinejs" defer></script>
+
+{% block extra_js %}{% endblock %}
+</body>
+</html>

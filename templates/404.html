@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>404 | Page Lost</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            softblue: "#e0f2ff",
+            coral: "#ff6b6b",
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-softblue min-h-screen flex items-center justify-center font-sans px-4">
+
+  <div class="bg-white shadow-lg rounded-xl p-10 max-w-lg w-full text-center border border-gray-200">
+    <div class="text-coral text-7xl font-bold mb-4">404</div>
+    <h1 class="text-2xl font-semibold text-gray-800 mb-2">This page flew the coop 🕊️</h1>
+    <p class="text-gray-600 mb-6">We couldn't find the page you're looking for.<br>Let’s get you back on track.</p>
+
+    <a href="/" class="inline-flex items-center justify-center gap-2 px-5 py-3 bg-coral hover:bg-red-500 text-white font-medium rounded-md transition duration-300">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+      </svg>
+      Back to Home
+    </a>
+
+    <div class="mt-8 text-sm text-gray-400">
+      <p>ERP System Revamped — v3.0</p>
+    </div>
+  </div>
+
+</body>
+</html>
