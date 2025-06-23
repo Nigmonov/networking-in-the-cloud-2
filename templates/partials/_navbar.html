@@ -21,11 +21,11 @@
 
             <!-- Links -->
             <div class="hidden md:flex space-x-6 items-center">
-                {% if user.is_authenticated %}
 
-                    {% if user.is_superuser or user.role == 'admin' %}
-                        <a href="{% url 'user_list' %}" class="hover:text-gray-200">Users</a>
-                                        <a href="{% url 'admin:index' %}" class="block hover:text-gray-300">Admin panel</a>
+                {% if user.is_superuser or user.role == 'admin' %}
+                    <a href="{% url 'admin:index' %}" class="block hover:text-gray-300">Admin panel</a>
+                    <a href="{% url 'user_list' %}" class="hover:text-gray-200">Users</a>
+                    {% if user.is_authenticated %}
 
                     {% endif %}
 
@@ -62,8 +62,8 @@
     <div x-data="{ open: false }" x-show="open" class="md:hidden px-4 pb-4 space-y-2">
         {% if user.is_authenticated %}
             {% if user.is_superuser or user.role == 'admin' %}
+                <a href="{% url 'admin:index' %}" class="block hover:text-gray-300">Admin panel</a>
                 <a href="{% url 'user_list' %}" class="block hover:text-gray-300">Users</a>
-                                <a href="{% url 'admin:index' %}" class="block hover:text-gray-300">Admin panel</a>
 
             {% endif %}
             {% if user.role == 'admin' or user.role == 'manager' or user.role == 'staff' %}

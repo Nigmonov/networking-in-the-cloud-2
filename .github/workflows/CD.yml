@@ -2,9 +2,9 @@ name: Django CD
 
 on:
   push:
-    branches: [ "deploy" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "deploy" ]
+    branches: [ "main" ]
 
 jobs:
   test-accounts:
@@ -118,7 +118,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{secrets.KEY}}
           script: |
-            cd /var/www/networking-in-the-cloud
+            cd /var/www/networking-in-the-cloud-2
             git config pull.rebase true
             git pull origin deploy
             source venv/bin/activate
