@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.db.models import Count, Sum, F
 from django.db.models.functions import TruncDay
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 
 from inventory.models import Category, Product
 from sales.models import Sale, SaleItem
@@ -11,6 +12,7 @@ from sales.models import Sale, SaleItem
 User = get_user_model()
 
 
+@login_required
 def dashboard_view(request):
     # Metrics
     total_sales_count = Sale.objects.count()
