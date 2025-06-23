@@ -120,7 +120,7 @@ jobs:
           script: |
             cd /var/www/networking-in-the-cloud-2
             git config pull.rebase true
-            git pull origin deploy
+            git pull origin main
             source venv/bin/activate
             pip install -r requirements.txt
             python manage.py migrate
